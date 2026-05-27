@@ -70,13 +70,13 @@ const experience: Entry[] = [
     org: "CWRU · PEAT AI Lab",
     dates: "May 2026 — Present",
     summary:
-      "Building an unsupervised log-anomaly detection framework to flag security threats across 10M+ network events.",
+      "Building an unsupervised log-anomaly detection framework to flag security threats across network flows.",
     details: [
-      "Pairing TF-IDF, Word2Vec, transformer and vLLM embedders (Qwen3) with classical outlier detectors to detect various attacks (DDoS, SQL Injection, Brute Force, and more) large-scale network flow logs.",
-      "Designing feature pipelines and benchmarks across multiple embedding and detector combinations to maximize detection signal.",
-      "Training and evaluating models on CWRU's HPC cluster via Slurm job scheduling.",
+      "Engineering TF-IDF, Word2Vec, transformer and vLLM embedders (Qwen3) for classical outlier detector models to flag various attacks (DDoS, SQL Injection, Brute Force, and more) in large-scale network flow logs.",
+      "Designing feature pipelines and benchmarks across multiple embedding and detector combinations to maximize detection signal and minimize false positives.",
+      "Training and evaluating models on CWRU's HPC cluster via Slurm job scheduling and chunked data processing, cutting training time by 4x.",
     ],
-    tags: ["PyTorch", "Hugging Face", "vLLM", "Qwen3", "Slurm", "GPU"],
+    tags: ["PyTorch", "Hugging Face", "vLLM", "Qwen3", "Linux", "HPC", "Slurm"],
     logo: "/cwru.avif",
   },
   {
@@ -88,7 +88,7 @@ const experience: Entry[] = [
     details: [
       "Trained machine learning models and neural networks to predict optimal assay parameters and minimize re-runs of drug potency experiments, cutting departmental experimental workload by up to 30%.",
       "Shipped ML models to production by authoring Python prediction endpoints in Dataiku's API framework and deploying them as REST APIs on AWS EKS through GitLab CI/CD pipelines with 100% automated test coverage.",
-      "Drove cross-functional adoption of ML algorithms across drug development workflows by leading collaboration with 100+ engineers, scientists, and senior leadership through technical presentations and stakeholder reviews.",
+      "Drove cross-functional adoption of ML algorithms across drug development workflows by presenting results to 100+ engineers, scientists, and senior leadership.",
       "Engineered ML feature pipelines by writing complex SQL queries across 30+ large-scale relational database tables.",
     ],
     tags: ["Python", "PyTorch", "Scikit-learn", "SQL", "GitLab CI/CD", "Docker", "AWS EKS", "Dataiku"],
@@ -99,15 +99,15 @@ const experience: Entry[] = [
     org: "CWRU · INVent Lab",
     dates: "Sep 2024 — Nov 2025",
     summary:
-      "Built deep learning pipelines for glomeruli segmentation in kidney whole-slide images by training U-Net and DenseNet models across multiple tissue stain types.",
+      "Developed deep learning pipelines for glomeruli segmentation in kidney whole-slide images by training U-Net and DenseNet models across multiple tissue stain types.",
     details: [
-      "Built and scaled a U-Net training loop from a 25-tile prototype to 1000+ tiles on HPC infrastructure, expanding the dataset by a factor of 2 and parallelizing tile-splitting scripts across compute nodes.",
-      "Applied CUDA memory optimization strategies and cuDNN benchmarking to reduce training time by 3x.",
+      "Scaled a U-Net + MedSAM training loop from a 25-tile prototype to 1000+ tiles on HPC infrastructure, expanding the dataset by a factor of 2 and parallelizing tile-splitting scripts across compute nodes.",
       "Automated download of 3000+ whole-slide kidney images from the KPMP Atlas using a Python Selenium pipeline, cutting download time from over 10 hours to 30 minutes.",
       "Developed a DenseNet training loop to complement segmentation outputs with tile-level classification.",
-      "Performed quality control variation analysis with HistoQC and annotated glomeruli regions across PAS, TOL, and SIL stained images in QuPath.",
+      "Applied CUDA memory optimization strategies and cuDNN benchmarking to reduce training time by 3x.",
+      
     ],
-    tags: ["PyTorch", "OpenCV", "MedSAM", "UNet", "DenseNet", "Selenium", "CUDA", "QuPath", "HPC"],
+    tags: ["PyTorch", "OpenCV", "MedSAM", "UNet", "DenseNet", "Selenium", "Linux", "HPC", "CUDA"],
     logo: "/invent.avif",
   },
   {
@@ -115,13 +115,12 @@ const experience: Entry[] = [
     org: "Lawrence Livermore National Laboratory",
     dates: "Jul 2024 — Aug 2024",
     summary:
-      "Built multi-task deep-learning models on simulated 12-lead ECG signals to classify cardiac conditions and regress full heart-activation maps during LLNL's national Data Science Challenge.",
+      "Trained multiple deep-learning models on simulated 12-lead ECG signals to classify cardiac conditions and regress full heart-activation maps during LLNL's national Data Science Challenge.",
     details: [
-      "Designed 1D-CNN classifiers and CNN→MLP regressors to predict both 75-point activation peaks and full 500×75 heart-activation graphs from simulated 12-lead ECG signals.",
-      "Handled severe class imbalance with upsampling and a custom false-negative-weighted loss, sweeping penalty factors and analyzing confusion matrices to maximize recall.",
+      "Designed 1D-CNN and MLP classifiers to predict both 75-point activation peaks and full 500×75 heart-activation graphs from simulated 12-lead ECG signals.",
       "Co-developed a 3D heart model in game-engine software to visualize predicted activations spatially, and presented the results to technical and non-technical lab audiences.",
     ],
-    tags: ["PyTorch", "1D CNN", "Time Series", "ECG"],
+    tags: ["PyTorch", "Tensorflow", "CNN", "ECG"],
     logo: "/llnl.jpeg",
   },
   {
@@ -129,12 +128,11 @@ const experience: Entry[] = [
     org: "CWRU · Solar Durability Lifetime Extension Center (SDLE)",
     dates: "Oct 2023 — Aug 2024",
     summary:
-      "Translated an R-based solar panel degradation prediction package into Python and applied statistical modeling to predict power loss over time, culminating in a first-author poster presentation at IEEE 2024 in Seattle.",
+      "Translated an R-based solar panel degradation prediction package into Python and applied statistical modeling to predict power loss over time.",
     details: [
-      "First-authored a research poster presented at the 2024 IEEE Photovoltaic Specialists Conference in Seattle.",
-      "Applied four statistical models combining multiple linear regression and physics-based approaches to derive relationships between power output and environmental factors (temperature, irradiance, wind speed), then layered weighted and yearly-separated regression techniques to compute Performance Loss Rate (PLR) degradation values.",
+      "First-authored a research poster presented at the 2024 IEEE Conference in Seattle.",
+      "Applied four statistical models combining multiple linear regression and physics-based approaches to derive relationships between power output and environmental factors (temperature, irradiance, wind speed) to compute Performance Loss Rate (PLR) degradation values across different time periods.",
       "Evaluated model accuracy by generating synthetic photovoltaic datasets using specialized Python libraries such as pvlib, and visualized results through scatter plots and heatmaps.",
-      "Preprocessed large volumes of unstructured solar panel sensor data by applying power and irradiance thresholds along with custom filters to prepare datasets for downstream modeling analysis.",
     ],
     tags: ["Python", "Scikit-learn", "pvlib", "Linear Regression", "BitBucket"],
     logo: "/cwru.avif",
@@ -147,14 +145,14 @@ const projects: Entry[] = [
     org: "Software Engineering Lead",
     dates: "Nov 2025 — Present",
     summary:
-      "Architected and deployed a HIPAA-compliant mobile app that screens patients for vocal disorders in seconds by computing clinical-grade acoustic metrics from a smartphone recording.",
+      "Architected and deployed a HIPAA-compliant mobile app that screens patients with vocal problems in seconds by computing clinical-grade acoustic metrics from a smartphone recording.",
     details: [
-      "Built the entire Django backend and deployed it on AWS with HIPAA-compliant infrastructure (signed BAA, private VPC, ECS Fargate, encrypted RDS and S3 storage, and TLS termination through an Application Load Balancer), currently serving 100+ users in active beta and handling sensitive clinical data at scale.",
-      "Engineered an asynchronous voice processing pipeline that queues uploaded audio, applies high-pass filtering, and extracts 20+ clinical-grade acoustic metrics (jitter, shimmer, cepstral peak prominence, harmonic-to-noise ratio) using the Praat-Parselmouth library in seconds.",
-      "Validating acoustic measurements against gold-standard diagnostic tools by partnering directly with speech pathologists at UH Cleveland Medical Center to refine the product around real clinical workflows and meet provider standards for diagnostic decision-making.",
-      "Filing a provisional patent protecting the novel integration of acoustic voice analysis, symptom assessment, and specialist matching into a single platform.",
-      "Awarded $1,320 in grant funding and Silicon Valley alumni mentorship through the CWRU PRISE program to support development and clinical validation efforts.",
-      "Led initial product designs using Figma templates, gathered iterative feedback from providers, and drove the React Native frontend implementation.",
+      "Led initial product designs using Figma templates, gathered iterative feedback from ENT physicians, and drove the React Native frontend implementation.",
+      "Developed the entire Django backend and deployed it on AWS with HIPAA-compliant infrastructure (signed BAA, private VPC, ECS Fargate, encrypted RDS and S3 storage, and TLS termination through an Application Load Balancer), currently serving 100+ users in active beta and handling sensitive clinical data at scale.",
+      "Engineered an asynchronous voice processing pipeline that queues uploaded audio, applies high-pass filtering, and extracts 20+ clinical-grade acoustic metrics (jitter, shimmer, cepstral peak prominence, harmonic-to-noise ratio) using the Praat-Parselmouth library in <1s.",
+      "Partnering directly with speech pathologists at UH Cleveland Medical Center to refine the product around real clinical workflows and meet provider standards for diagnostic decision-making.",
+      "Filing a provisional patent (through Menlo Park Patents) protecting the novel integration of acoustic voice analysis and symptom assessment into a single platform.",
+      "Awarded $1,320 in grant funding and receiving mentorship from CWRU alumni based in Silicon Valley to develop go-to-market strategy targeting hospital system licensing and a SaaS subscription model for commercialization.",
     ],
     tags: ["AWS", "React Native", "Django", "Expo EAS", "Docker", "PostgreSQL", "Figma", "Praat-Parselmouth"],
     href: "https://apps.apple.com/us/app/acousticare/id6760281547",
@@ -166,13 +164,11 @@ const projects: Entry[] = [
     org: "Software Engineering Lead",
     dates: "Jan 2026",
     summary:
-      "A GenAI 1v1 mobile game that grades real GitHub and Notion contributions via OAuth and Gemini-driven prompt pipelines to declare a winner.",
+      "Built a GenAI-powered 1v1 mobile game using the Gemini API with structured prompt engineering to score GitHub and Notion contributions via OAuth-integrated APIs, automatically determining match winners.",
     details: [
-      "Pipes contributions through Gemini-driven prompt chains in a FastAPI backend to score and rank competitors.",
-      "Pulls real activity history through GitHub and Notion OAuth integrations for both players.",
-      "Built end-to-end during a CWRU hackathon with a small team.",
+      "Engineered the full-stack system (matchmaking engine, real-time progress tracking, and AI verdict pipeline) to handle concurrent multiplayer matches end to end.",
     ],
-    tags: ["React Native", "FastAPI", "Docker", "Gemini API", "OAuth 2.0"],
+    tags: ["React Native", "Expo", "FastAPI", "SQLAlchemy", "Gemini API", "OAuth 2.0", "Docker"],
     href: "https://github.com/surajkmr4218/rival",
     hrefLabel: "GitHub",
     logo: "/rival.png",
@@ -339,10 +335,10 @@ export default function Home() {
           <Reveal delay={80}>
             <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
               I&rsquo;m an M.S. student studying Computer Science at Case Western Reserve University and graduating in December 2027.
-              I have been programming for several years and I have the most experience in Python, TypeScript, JavaScript, HTML/CSS, and Java.
+              I have been programming for several years and I have the most experience in Python, TypeScript, JavaScript, HTML/CSS, Java, and C.
               Outside of class, I work as a researcher at the Case PEAT AI Lab where I am applying embedding models and detection algorithms
               to identify anomalies in large-scale network flow datasets (see <a href="#experience" className="link-underline text-foreground">Experience Section</a>). 
-              I am also passionate about software engineering projects and building fullstack applications serving hundreds of users, like AcoustiCare and Rival 
+              I am also passionate about software engineering projects and building fullstack applications serving hundreds of users, like AcoustiCare 
               (see <a href="#projects" className="link-underline text-foreground">Projects Section</a>). I&rsquo;m specifically
               drawn to problems that sit at the forefront of innovative technology and real-world impact. I want to work on fullstack applications,
               ML/AI engineering, and large-scale distributed systems that solve meaningful problems for users.
