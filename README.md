@@ -1,6 +1,6 @@
 # suraj-kumar-website
 
-Personal website for [Suraj Kumar](https://linkedin.com/in/surajkumar42) — built with Next.js (App Router) and Tailwind CSS, deployed on Vercel.
+Personal website for [Suraj Kumar](https://suraj-kumar-website.vercel.app/) — built with Next.js (App Router) and Tailwind CSS, deployed on Vercel.
 
 ## Stack
 
