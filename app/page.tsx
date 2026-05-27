@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ContactForm } from "./_components/ContactForm";
 import { Reveal } from "./_components/Reveal";
 import { SideRail } from "./_components/SideRail";
 
@@ -51,12 +52,16 @@ function FileIcon() {
   );
 }
 
-type Entry = {
+interface Entry {
   role: string;
   org: string;
   dates: string;
   summary: string;
+  details?: string[];
   tags?: string[];
+  href?: string;
+  hrefLabel?: string;
+  logo?: string;
 };
 
 const experience: Entry[] = [
@@ -65,32 +70,74 @@ const experience: Entry[] = [
     org: "CWRU · PEAT AI Lab",
     dates: "May 2026 — Present",
     summary:
-      "Building an unsupervised log-anomaly framework that pairs transformer/vLLM embedders with classical outlier detectors to flag threats across 10M+ events at 0.98+ AUROC.",
-    tags: ["Qwen3", "DeepSVDD", "SLURM", "HPC"],
+      "Building an unsupervised log-anomaly detection framework to flag security threats across 10M+ network events.",
+    details: [
+      "Pairing TF-IDF, Word2Vec, transformer and vLLM embedders (Qwen3) with classical outlier detectors to detect various attacks (DDoS, SQL Injection, Brute Force, and more) large-scale network flow logs.",
+      "Designing feature pipelines and benchmarks across multiple embedding and detector combinations to maximize detection signal.",
+      "Training and evaluating models on CWRU's HPC cluster via Slurm job scheduling.",
+    ],
+    tags: ["PyTorch", "Hugging Face", "vLLM", "Qwen3", "Slurm", "GPU"],
+    logo: "/cwru.avif",
   },
   {
     role: "Machine Learning Engineer Intern",
     org: "Genentech",
-    dates: "Jun — Dec 2025",
+    dates: "Jun 2025 — Dec 2025",
     summary:
-      "Cut the Bioassay department's experimental workload by 30% with ML models that predict drug-potency failures. Shipped inference endpoints to AWS EKS via GitLab CI/CD.",
-    tags: ["PyTorch", "AWS EKS", "Dataiku", "SQL"],
+      "Reduced the Bioassay department's experimental workload by 30% by building and deploying machine learning models that optimized drug potency assay parameters.",
+    details: [
+      "Trained machine learning models and neural networks to predict optimal assay parameters and minimize re-runs of drug potency experiments, cutting departmental experimental workload by up to 30%.",
+      "Shipped ML models to production by authoring Python prediction endpoints in Dataiku's API framework and deploying them as REST APIs on AWS EKS through GitLab CI/CD pipelines with 100% automated test coverage.",
+      "Drove cross-functional adoption of ML algorithms across drug development workflows by leading collaboration with 100+ engineers, scientists, and senior leadership through technical presentations and stakeholder reviews.",
+      "Engineered ML feature pipelines by writing complex SQL queries across 30+ large-scale relational database tables.",
+    ],
+    tags: ["Python", "PyTorch", "Scikit-learn", "SQL", "GitLab CI/CD", "Docker", "AWS EKS", "Dataiku"],
+    logo: "/gne.gif",
   },
   {
     role: "Deep Learning Undergraduate Researcher",
     org: "CWRU · INVent Lab",
     dates: "Sep 2024 — Nov 2025",
     summary:
-      "Trained a UNet on MedSAM pseudo-labels for glomeruli segmentation on pathology slides, lifting baseline accuracy by 19% while cutting HPC training time 3×.",
-    tags: ["MedSAM", "UNet", "CUDA"],
+      "Built deep learning pipelines for glomeruli segmentation in kidney whole-slide images by training U-Net and DenseNet models across multiple tissue stain types.",
+    details: [
+      "Built and scaled a U-Net training loop from a 25-tile prototype to 1000+ tiles on HPC infrastructure, expanding the dataset by a factor of 2 and parallelizing tile-splitting scripts across compute nodes.",
+      "Applied CUDA memory optimization strategies and cuDNN benchmarking to reduce training time by 3x.",
+      "Automated download of 3000+ whole-slide kidney images from the KPMP Atlas using a Python Selenium pipeline, cutting download time from over 10 hours to 30 minutes.",
+      "Developed a DenseNet training loop to complement segmentation outputs with tile-level classification.",
+      "Performed quality control variation analysis with HistoQC and annotated glomeruli regions across PAS, TOL, and SIL stained images in QuPath.",
+    ],
+    tags: ["PyTorch", "OpenCV", "MedSAM", "UNet", "DenseNet", "Selenium", "CUDA", "QuPath", "HPC"],
+    logo: "/invent.avif",
+  },
+  {
+    role: "Data Science Challenge Participant",
+    org: "Lawrence Livermore National Laboratory",
+    dates: "Jul 2024 — Aug 2024",
+    summary:
+      "Built multi-task deep-learning models on simulated 12-lead ECG signals to classify cardiac conditions and regress full heart-activation maps during LLNL's national Data Science Challenge.",
+    details: [
+      "Designed 1D-CNN classifiers and CNN→MLP regressors to predict both 75-point activation peaks and full 500×75 heart-activation graphs from simulated 12-lead ECG signals.",
+      "Handled severe class imbalance with upsampling and a custom false-negative-weighted loss, sweeping penalty factors and analyzing confusion matrices to maximize recall.",
+      "Co-developed a 3D heart model in game-engine software to visualize predicted activations spatially, and presented the results to technical and non-technical lab audiences.",
+    ],
+    tags: ["PyTorch", "1D CNN", "Time Series", "ECG"],
+    logo: "/llnl.jpeg",
   },
   {
     role: "Undergraduate Researcher",
-    org: "CWRU · SDLE — incl. LLNL Data Science Challenge",
+    org: "CWRU · Solar Durability Lifetime Extension Center (SDLE)",
     dates: "Oct 2023 — Aug 2024",
     summary:
-      "Ported a solar-panel degradation R package to Python and fit physics-based and regression models for power loss; first author on a poster presented at IEEE 2024 in Seattle.",
-    tags: ["pvlib", "Regression", "ECG DL"],
+      "Translated an R-based solar panel degradation prediction package into Python and applied statistical modeling to predict power loss over time, culminating in a first-author poster presentation at IEEE 2024 in Seattle.",
+    details: [
+      "First-authored a research poster presented at the 2024 IEEE Photovoltaic Specialists Conference in Seattle.",
+      "Applied four statistical models combining multiple linear regression and physics-based approaches to derive relationships between power output and environmental factors (temperature, irradiance, wind speed), then layered weighted and yearly-separated regression techniques to compute Performance Loss Rate (PLR) degradation values.",
+      "Evaluated model accuracy by generating synthetic photovoltaic datasets using specialized Python libraries such as pvlib, and visualized results through scatter plots and heatmaps.",
+      "Preprocessed large volumes of unstructured solar panel sensor data by applying power and irradiance thresholds along with custom filters to prepare datasets for downstream modeling analysis.",
+    ],
+    tags: ["Python", "Scikit-learn", "pvlib", "Linear Regression", "BitBucket"],
+    logo: "/cwru.avif",
   },
 ];
 
@@ -100,16 +147,35 @@ const projects: Entry[] = [
     org: "Software Engineering Lead",
     dates: "Nov 2025 — Present",
     summary:
-      "A HIPAA-compliant voice-screening iOS app for ENT clinics. Computes 20+ clinical acoustic metrics from a phone recording — replacing a multi-hour workflow with one that returns results in seconds. Validated with clinicians at UH Cleveland Medical Center.",
-    tags: ["Django", "AWS ECS", "React Native", "PostgreSQL"],
+      "Architected and deployed a HIPAA-compliant mobile app that screens patients for vocal disorders in seconds by computing clinical-grade acoustic metrics from a smartphone recording.",
+    details: [
+      "Built the entire Django backend and deployed it on AWS with HIPAA-compliant infrastructure (signed BAA, private VPC, ECS Fargate, encrypted RDS and S3 storage, and TLS termination through an Application Load Balancer), currently serving 100+ users in active beta and handling sensitive clinical data at scale.",
+      "Engineered an asynchronous voice processing pipeline that queues uploaded audio, applies high-pass filtering, and extracts 20+ clinical-grade acoustic metrics (jitter, shimmer, cepstral peak prominence, harmonic-to-noise ratio) using the Praat-Parselmouth library in seconds.",
+      "Validating acoustic measurements against gold-standard diagnostic tools by partnering directly with speech pathologists at UH Cleveland Medical Center to refine the product around real clinical workflows and meet provider standards for diagnostic decision-making.",
+      "Filing a provisional patent protecting the novel integration of acoustic voice analysis, symptom assessment, and specialist matching into a single platform.",
+      "Awarded $1,320 in grant funding and Silicon Valley alumni mentorship through the CWRU PRISE program to support development and clinical validation efforts.",
+      "Led initial product designs using Figma templates, gathered iterative feedback from providers, and drove the React Native frontend implementation.",
+    ],
+    tags: ["AWS", "React Native", "Django", "Expo EAS", "Docker", "PostgreSQL", "Figma", "Praat-Parselmouth"],
+    href: "https://apps.apple.com/us/app/acousticare/id6760281547",
+    hrefLabel: "App Store",
+    logo: "/acousticare.png",
   },
   {
     role: "Rival",
-    org: "CWRU Hackathon",
+    org: "Software Engineering Lead",
     dates: "Jan 2026",
     summary:
       "A GenAI 1v1 mobile game that grades real GitHub and Notion contributions via OAuth and Gemini-driven prompt pipelines to declare a winner.",
-    tags: ["Gemini API", "FastAPI", "OAuth 2.0"],
+    details: [
+      "Pipes contributions through Gemini-driven prompt chains in a FastAPI backend to score and rank competitors.",
+      "Pulls real activity history through GitHub and Notion OAuth integrations for both players.",
+      "Built end-to-end during a CWRU hackathon with a small team.",
+    ],
+    tags: ["React Native", "FastAPI", "Docker", "Gemini API", "OAuth 2.0"],
+    href: "https://github.com/surajkmr4218/rival",
+    hrefLabel: "GitHub",
+    logo: "/rival.png",
   },
 ];
 
@@ -137,11 +203,32 @@ function SectionHeader({ id, label, kicker }: { id: string; label: string; kicke
 function EntryRow({ entry }: { entry: Entry }) {
   return (
     <article className="entry-row grid grid-cols-[1fr_auto] gap-x-6 gap-y-1 py-6 border-b border-hairline last:border-b-0">
-      <div>
-        <h3 className="text-base font-medium text-foreground">
-          {entry.role}
-          <span className="text-muted font-normal"> · {entry.org}</span>
-        </h3>
+      <div className="flex items-center gap-3">
+        {entry.logo && (
+          <Image
+            src={entry.logo}
+            alt={`${entry.org} logo`}
+            width={40}
+            height={40}
+            className="h-9 w-9 rounded-md object-cover ring-1 ring-hairline bg-background-tint/60 shrink-0"
+          />
+        )}
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+          <h3 className="text-base font-medium text-foreground">
+            {entry.role}
+            <span className="text-muted font-normal"> · {entry.org}</span>
+          </h3>
+          {entry.href && (
+            <a
+              href={entry.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline font-mono text-[10.5px] uppercase tracking-[0.18em] text-accent"
+            >
+              {entry.hrefLabel ?? "Link"} ↗
+            </a>
+          )}
+        </div>
       </div>
       <span className="font-mono text-xs text-muted tabular-nums whitespace-nowrap pt-1">
         {entry.dates}
@@ -149,6 +236,18 @@ function EntryRow({ entry }: { entry: Entry }) {
       <p className="col-span-2 text-[15px] leading-relaxed text-foreground/80 max-w-3xl mt-1">
         {entry.summary}
       </p>
+      {entry.details && (
+        <ul className="col-span-2 mt-3 space-y-1.5 max-w-3xl">
+          {entry.details.map((d, i) => (
+            <li
+              key={i}
+              className="relative pl-5 text-[14px] leading-relaxed text-foreground/70 before:content-[''] before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-3 before:bg-muted/60"
+            >
+              {d}
+            </li>
+          ))}
+        </ul>
+      )}
       {entry.tags && (
         <ul className="col-span-2 flex flex-wrap gap-x-2 gap-y-1.5 mt-3">
           {entry.tags.map((t) => (
@@ -200,7 +299,7 @@ export default function Home() {
                   className="link-underline inline-flex items-center gap-2"
                 >
                   <MailIcon />
-                  Email
+                  surajkmr4218@gmail.com
                 </a>
                 <a
                   href="https://linkedin.com/in/surajkumar42"
@@ -239,13 +338,14 @@ export default function Home() {
           <SectionHeader id="about" label="About" kicker="01" />
           <Reveal delay={80}>
             <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
-              I&rsquo;m an M.S. student studying Computer Science at Case Western Reserve University (graduating in December 2027).
+              I&rsquo;m an M.S. student studying Computer Science at Case Western Reserve University and graduating in December 2027.
               I have been programming for several years and I have the most experience in Python, TypeScript, JavaScript, HTML/CSS, and Java.
               Outside of class, I work as a researcher at the Case PEAT AI Lab where I am applying embedding models and detection algorithms
-              to identify anomalies in large-scale network flow datasets (see Experience Section). I am also passionate about building fullstack applications and cloud
-              infrastructure serving hundreds of users, like AcoustiCare and Rival (see Projects Section). I&rsquo;m specifically drawn to problems
-              that sit at the forefront of innovative technology and real-world impact. I want to work on fullstack applications, ML/AI products,
-              and large-scale distributed systems that solve meaningful problems for users.
+              to identify anomalies in large-scale network flow datasets (see <a href="#experience" className="link-underline text-foreground">Experience Section</a>). 
+              I am also passionate about software engineering projects and building fullstack applications serving hundreds of users, like AcoustiCare and Rival 
+              (see <a href="#projects" className="link-underline text-foreground">Projects Section</a>). I&rsquo;m specifically
+              drawn to problems that sit at the forefront of innovative technology and real-world impact. I want to work on fullstack applications,
+              ML/AI engineering, and large-scale distributed systems that solve meaningful problems for users.
             </p>
           </Reveal>
         </section>
@@ -342,19 +442,10 @@ export default function Home() {
               </li>
               <li className="grid grid-cols-[1fr_auto] gap-x-6 py-4">
                 <span className="text-[15px] text-foreground/85">
-                  AcoustiCare — PRISE grant ($1,320) + Silicon Valley alumni
-                  mentorship
+                  President&rsquo;s Volunteer Service Award  
                 </span>
                 <span className="font-mono text-xs text-muted tabular-nums">
-                  2025
-                </span>
-              </li>
-              <li className="grid grid-cols-[1fr_auto] gap-x-6 py-4">
-                <span className="text-[15px] text-foreground/85">
-                  President&rsquo;s Volunteer Service Award — Bronze
-                </span>
-                <span className="font-mono text-xs text-muted tabular-nums">
-                  2022
+                  Oct 2022
                 </span>
               </li>
             </ul>
@@ -363,51 +454,80 @@ export default function Home() {
 
         {/* Off the Clock */}
         <section className="mt-24 space-y-6">
-          <SectionHeader id="off-the-clock" label="Off the Clock" kicker="06" />
-          <Reveal>
-            <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
-              Outside of work I shoot a fair amount of{" "}
-              <span className="text-foreground italic font-serif text-[17px]">
-                photography
-              </span>{" "}
-              — mostly landscapes from{" "}
-              <span className="text-foreground italic font-serif text-[17px]">
-                hikes
-              </span>
-              , which I try to chase on most free weekends. I grew up playing{" "}
-              <span className="text-foreground italic font-serif text-[17px]">
-                baseball
-              </span>{" "}
-              and still find any excuse for a pickup game of{" "}
-              <span className="text-foreground italic font-serif text-[17px]">
-                basketball
-              </span>{" "}
-              or{" "}
-              <span className="text-foreground italic font-serif text-[17px]">
-                pickleball
-              </span>
-              .
-            </p>
-          </Reveal>
+          <SectionHeader id="off-the-clock" label="Hobbies and Interests" kicker="06" />
+          <div className="space-y-5">
+            <Reveal direction="left" delay={80}>
+              <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
+                I shoot a fair amount of{" "}
+                <span className="text-foreground italic font-serif text-[17px]">
+                  photography
+                </span> 
+                , mostly landscapes from travel and photo walks. Most of it ends up on
+                Instagram at{" "}
+                <a
+                  href="https://instagram.com/sklicks_"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline text-foreground"
+                >
+                  @sklicks_
+                </a>
+                .
+              </p>
+            </Reveal>
+
+            <Reveal direction="right" delay={160}>
+              <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
+                I&rsquo;m a bit of an{" "}
+                <span className="text-foreground italic font-serif text-[17px]">
+                  adrenaline junkie
+                </span>{" "}
+                — skydiving, jet skiing, and hiking trails with friends are some of my favorite ways to spend a weekend. 
+              </p>
+            </Reveal>
+
+            <Reveal direction="left" delay={240}>
+              <p className="text-[15.5px] leading-[1.75] text-foreground/85 max-w-3xl">
+                I grew up playing{" "}
+                <span className="text-foreground italic font-serif text-[17px]">
+                  baseball
+                </span> 
+                , but now I&rsquo;m always down for a pickup game of{" "}
+                <span className="text-foreground italic font-serif text-[17px]">
+                  basketball
+                </span>{" "}
+                or{" "}
+                <span className="text-foreground italic font-serif text-[17px]">
+                  pickleball
+                </span>
+                .
+              </p>
+            </Reveal>
+          </div>
         </section>
 
         {/* Footer */}
         <Reveal as="div">
-          <footer className="mt-32 pt-8 border-t border-hairline flex flex-wrap items-end justify-between gap-4">
-            <div className="space-y-1">
-              <p className="font-serif text-2xl text-foreground">
-                Let&rsquo;s talk.
-              </p>
-              <a
-                href="mailto:surajkmr4218@gmail.com"
-                className="link-underline text-sm text-muted"
-              >
-                surajkmr4218@gmail.com
-              </a>
+          <footer className="mt-32 pt-8 border-t border-hairline space-y-8">
+            <div className="flex flex-wrap items-start justify-between gap-8">
+              <div className="space-y-3">
+                <p className="font-serif text-2xl text-foreground">
+                  Let&rsquo;s talk.
+                </p>
+                <a
+                  href="mailto:surajkmr4218@gmail.com"
+                  className="link-underline text-sm text-muted block"
+                >
+                  surajkmr4218@gmail.com
+                </a>
+              </div>
+              <ContactForm />
             </div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-              © {new Date().getFullYear()} Suraj Kumar
-            </span>
+            <div className="flex justify-end">
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                © {new Date().getFullYear()} Suraj Kumar
+              </span>
+            </div>
           </footer>
         </Reveal>
       </main>
