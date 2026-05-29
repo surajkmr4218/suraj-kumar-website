@@ -167,6 +167,7 @@ const projects: Entry[] = [
       "Built a GenAI-powered 1v1 mobile game using the Gemini API with structured prompt engineering to score GitHub and Notion contributions via OAuth-integrated APIs, automatically determining match winners.",
     details: [
       "Engineered the full-stack system (matchmaking engine, real-time progress tracking, and AI verdict pipeline) to handle concurrent multiplayer matches end to end.",
+      "Started as a hackathon project and iterated on the MVP by using structured prompts to ensure accurate and consistent scoring across different contribution types.",
     ],
     tags: ["React Native", "Expo", "FastAPI", "SQLAlchemy", "Gemini API", "OAuth 2.0", "Docker"],
     href: "https://github.com/surajkmr4218/rival",
