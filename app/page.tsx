@@ -67,74 +67,68 @@ interface Entry {
 const experience: Entry[] = [
   {
     role: "AI Security Graduate Researcher",
-    org: "CWRU · PEAT AI Lab",
+    org: "CWRU PEAT AI Lab",
     dates: "May 2026 — Present",
-    summary:
-      "Building an unsupervised log-anomaly detection framework to flag security threats across network flows.",
+    summary: "Cybersecurity · Anomaly Detection · Embedding Models · Machine Learning",
     details: [
-      "Engineering TF-IDF, Word2Vec, transformer and vLLM embedders (Qwen3) for classical outlier detector models to flag various attacks (DDoS, SQL Injection, Brute Force, and more) in large-scale network flow logs.",
-      "Designing feature pipelines and benchmarks across multiple embedding and detector combinations to maximize detection signal and minimize false positives.",
-      "Training and evaluating models on CWRU's HPC cluster via Slurm job scheduling and chunked data processing, cutting training time by 4x.",
+      "Built an unsupervised, online log-anomaly detection framework that flags intrusions in streaming network-flow logs, scoring each window against a learned geometric typicality region.",
+      "Engineered TF-IDF, Word2Vec, and Qwen3-based embedders paired with four outlier detection models (GMM, KDE, One-Class SVM, DeepSVDD) to convert raw log streams into actionable anomaly alerts.",
+      "Scaled embedding generation on Linux HPC clusters via chunked streaming I/O and memory-efficient attention, processing 10M+ flow records while cutting peak GPU memory by 10x.",
     ],
-    tags: ["PyTorch", "Hugging Face", "vLLM", "Qwen3", "Linux", "HPC", "Slurm"],
+    tags: ["PyTorch", "vLLM", "Qwen3", "Hugging Face", "HPC", "Slurm", "Linux"],
     logo: "/cwru.avif",
   },
   {
     role: "Machine Learning Engineer Intern",
     org: "Genentech",
     dates: "Jun 2025 — Dec 2025",
-    summary:
-      "Reduced the Bioassay department's experimental workload by 30% by building and deploying machine learning models that optimized drug potency assay parameters.",
+    summary: "Machine Learning · Biotech · MLOps",
     details: [
       "Trained machine learning models and neural networks to predict optimal assay parameters and minimize re-runs of drug potency experiments, cutting departmental experimental workload by up to 30%.",
       "Shipped ML models to production by authoring Python prediction endpoints in Dataiku's API framework and deploying them as REST APIs on AWS EKS through GitLab CI/CD pipelines with 100% automated test coverage.",
       "Drove cross-functional adoption of ML algorithms across drug development workflows by presenting results to 100+ engineers, scientists, and senior leadership.",
       "Engineered ML feature pipelines by writing complex SQL queries across 30+ large-scale relational database tables.",
     ],
-    tags: ["Python", "PyTorch", "Scikit-learn", "SQL", "GitLab CI/CD", "Docker", "AWS EKS", "Dataiku"],
+    tags: ["PyTorch", "Scikit-learn", "AWS EKS", "GitLab CI/CD", "Docker", "SQL", "Dataiku"],
     logo: "/gne.gif",
   },
   {
     role: "Deep Learning Undergraduate Researcher",
-    org: "CWRU · INVent Lab",
+    org: "CWRU INVent Lab",
     dates: "Sep 2024 — Nov 2025",
-    summary:
-      "Developed deep learning pipelines for glomeruli segmentation in kidney whole-slide images by training U-Net and DenseNet models across multiple tissue stain types.",
+    summary: "Deep Learning · Computer Vision · Medical Imaging",
     details: [
-      "Scaled a U-Net + MedSAM training loop from a 25-tile prototype to 1000+ tiles on HPC infrastructure, expanding the dataset by a factor of 2 and parallelizing tile-splitting scripts across compute nodes.",
+      "Engineered a deep learning pipeline for glomeruli segmentation in pathology images that leverages a foundation model (MedSAM) to provide pseudo-labels for a UNet, increasing baseline accuracy by 19%.",
+      "Trained an EfficientNet-B3 binary classifier to filter non-glomeruli tiles at 94% precision, reducing downstream segmentation noise and shrinking the testing pool by 40% before MedSAM labeling.",
+      "Refined noisy ground truth masks via morphological opening and connected-component area filtering, discarding spurious segmentations to raise pseudo-label quality across training iterations.",
       "Automated download of 3000+ whole-slide kidney images from the KPMP Atlas using a Python Selenium pipeline, cutting download time from over 10 hours to 30 minutes.",
-      "Developed a DenseNet training loop to complement segmentation outputs with tile-level classification.",
-      "Applied CUDA memory optimization strategies and cuDNN benchmarking to reduce training time by 3x.",
-      
     ],
-    tags: ["PyTorch", "OpenCV", "MedSAM", "UNet", "DenseNet", "Selenium", "Linux", "HPC", "CUDA"],
+    tags: ["PyTorch", "MedSAM", "UNet", "EfficientNet", "OpenCV", "HPC", "CUDA", "Linux", "Selenium"],
     logo: "/invent.avif",
   },
   {
     role: "Data Science Challenge Participant",
     org: "Lawrence Livermore National Laboratory",
     dates: "Jul 2024 — Aug 2024",
-    summary:
-      "Trained multiple deep-learning models on simulated 12-lead ECG signals to classify cardiac conditions and regress full heart-activation maps during LLNL's national Data Science Challenge.",
+    summary: "Deep Learning · Signal Processing · Healthcare AI",
     details: [
       "Designed 1D-CNN and MLP classifiers to predict both 75-point activation peaks and full 500×75 heart-activation graphs from simulated 12-lead ECG signals.",
       "Co-developed a 3D heart model in game-engine software to visualize predicted activations spatially, and presented the results to technical and non-technical lab audiences.",
     ],
-    tags: ["PyTorch", "Tensorflow", "CNN", "ECG"],
+    tags: ["PyTorch", "Tensorflow", "Jupyter Notebook", "Unity", "3D Modeling"],
     logo: "/llnl.jpeg",
   },
   {
     role: "Undergraduate Researcher",
-    org: "CWRU · Solar Durability Lifetime Extension Center (SDLE)",
+    org: "CWRU Solar Durability Lifetime Extension Center (SDLE)",
     dates: "Oct 2023 — Aug 2024",
-    summary:
-      "Translated an R-based solar panel degradation prediction package into Python and applied statistical modeling to predict power loss over time.",
+    summary: "Data Science · Statistical Modeling · Solar Panel Modeling",
     details: [
       "First-authored a research poster presented at the 2024 IEEE Conference in Seattle.",
       "Applied four statistical models combining multiple linear regression and physics-based approaches to derive relationships between power output and environmental factors (temperature, irradiance, wind speed) to compute Performance Loss Rate (PLR) degradation values across different time periods.",
       "Evaluated model accuracy by generating synthetic photovoltaic datasets using specialized Python libraries such as pvlib, and visualized results through scatter plots and heatmaps.",
     ],
-    tags: ["Python", "Scikit-learn", "pvlib", "Linear Regression", "BitBucket"],
+    tags: ["Python", "Scikit-learn", "Linear Regression", "pvlib", "BitBucket"],
     logo: "/cwru.avif",
   },
 ];
@@ -144,17 +138,16 @@ const projects: Entry[] = [
     role: "AcoustiCare",
     org: "Software Engineering Lead",
     dates: "Nov 2025 — Present",
-    summary:
-      "Architected and deployed a HIPAA-compliant mobile app that screens patients with vocal problems in seconds by computing clinical-grade acoustic metrics from a smartphone recording.",
+    summary: "Full-Stack Mobile Development · Cloud Infrastructure · Health Tech",
     details: [
-      "Led initial product designs using Figma templates, gathered iterative feedback from ENT physicians, and drove the React Native frontend implementation.",
-      "Developed the entire Django backend and deployed it on AWS with HIPAA-compliant infrastructure (signed BAA, private VPC, ECS Fargate, encrypted RDS and S3 storage, and TLS termination through an Application Load Balancer), currently serving 100+ users in active beta and handling sensitive clinical data at scale.",
-      "Engineered an asynchronous voice processing pipeline that queues uploaded audio, applies high-pass filtering, and extracts 20+ clinical-grade acoustic metrics (jitter, shimmer, cepstral peak prominence, harmonic-to-noise ratio) using the Praat-Parselmouth library in <1s.",
-      "Partnering directly with speech pathologists at UH Cleveland Medical Center to refine the product around real clinical workflows and meet provider standards for diagnostic decision-making.",
-      "Filing a provisional patent (through Menlo Park Patents) protecting the novel integration of acoustic voice analysis and symptom assessment into a single platform.",
-      "Awarded $1,320 in grant funding and receiving mentorship from CWRU alumni based in Silicon Valley to develop go-to-market strategy targeting hospital system licensing and a SaaS subscription model for commercialization.",
+      "Built and deployed a HIPAA-compliant AWS infrastructure (ECS Fargate, encrypted RDS and S3, private VPC, TLS-terminated load balancing, signed BAA) with a Django backend serving 100+ active beta users and handling sensitive clinical data.",
+      "Engineered an asynchronous voice-processing pipeline that extracts 20+ clinical-grade acoustic metrics (jitter, shimmer, cepstral peak prominence, and others) in < 1 second, by queuing uploaded recordings, applying high-pass filtering, and processing audio with the Praat-Parselmouth library.",
+      "Reduced UI load time by 90% by implementing React cache querying and async programming, keeping the interface non-blocking during large clinical data fetches.",
+      "Led product design from concept to implementation by building Figma prototypes, running iterative feedback cycles with ENT physicians, and directing the React Native frontend build.",
+      "Filed a provisional patent white paper (via Menlo Park Patents) protecting the novel integration of acoustic voice analysis and symptom assessment into a single platform.",
+      "Secured $1,320 in grant funding and CWRU alumni mentorship (Silicon Valley) to develop a go-to-market strategy targeting hospital-system licensing and a SaaS subscription model.",
     ],
-    tags: ["AWS", "React Native", "Django", "Expo EAS", "Docker", "PostgreSQL", "Figma", "Praat-Parselmouth"],
+    tags: ["AWS", "Django", "React Native", "Expo EAS", "PostgreSQL", "Docker", "Praat-Parselmouth", "Figma"],
     href: "https://apps.apple.com/us/app/acousticare/id6760281547",
     hrefLabel: "App Store",
     logo: "/acousticare.png",
@@ -163,13 +156,13 @@ const projects: Entry[] = [
     role: "Rival",
     org: "Software Engineering Lead",
     dates: "Jan 2026",
-    summary:
-      "Built a GenAI-powered 1v1 mobile game using the Gemini API with structured prompt engineering to score GitHub and Notion contributions via OAuth-integrated APIs, automatically determining match winners.",
+    summary: "Generative AI · Full-Stack Mobile Development · Productivity Tools",
     details: [
+      "Built a GenAI-powered 1v1 mobile game using Gemini API with structured prompt engineering to score GitHub and Notion contributions via OAuth-integrated APIs, automatically determining who was more productive.",
       "Engineered the full-stack system (matchmaking engine, real-time progress tracking, and AI verdict pipeline) to handle concurrent multiplayer matches end to end.",
       "Started as a hackathon project and iterated on the MVP by using structured prompts to ensure accurate and consistent scoring across different contribution types.",
     ],
-    tags: ["React Native", "Expo", "FastAPI", "SQLAlchemy", "Gemini API", "OAuth 2.0", "Docker"],
+    tags: ["Gemini API", "React Native", "FastAPI", "Expo", "OAuth 2.0", "SQLAlchemy", "Docker"],
     href: "https://github.com/surajkmr4218/rival",
     hrefLabel: "GitHub",
     logo: "/rival.png",
@@ -287,7 +280,7 @@ export default function Home() {
                   Suraj Kumar
                 </h1>
                 <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
-                  Hometown: Fremont, CA
+                  Hometown: Bay Area, CA
                 </p>
               </div>
               <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm pt-2">
